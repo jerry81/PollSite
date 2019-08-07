@@ -1,9 +1,12 @@
 import { connect } from 'dva';
 import { useState, useEffect } from 'react';
 
+import { QuestionsList } from './components/QuestionsList';
+
 import styles from './index.less';
 
 function Polls({ pollsModel, dispatch }) {
+  const {questions} = pollsModel;
   // region state 
   // endregion state
   // region effects
@@ -13,8 +16,8 @@ function Polls({ pollsModel, dispatch }) {
     })
   }, [])
   useEffect(() => {
-    console.log('questions are', pollsModel.questions);
-  }, [pollsModel.questions])
+    console.log('questions are', questions);
+  }, [questions])
   // endregion effects
   // region template
   
@@ -23,6 +26,7 @@ function Polls({ pollsModel, dispatch }) {
       <main>
         <article className={styles['questions-list']}>
           <span className={styles['questions-header']}>Questions</span>
+          <QuestionsList questions={questions}/>
         </article>
       </main>
     </div>

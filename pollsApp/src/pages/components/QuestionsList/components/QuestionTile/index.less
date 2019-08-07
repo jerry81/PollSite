@@ -1,0 +1,30 @@
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display:flex;
+    flex-direction: column;
+}
+
+.root {
+    height: auto;
+    margin:15px;
+    padding:15px;
+    width: 300px;
+    border: 1px solid black;
+
+
+    .questions { 
+     &:extend(.ellipsis);
+      margin-bottom:5px;
+    }
+    
+    .date {
+        &:extend(.ellipsis);
+      margin-bottom:2px;
+    }
+
+    .count {
+      &:extend(.ellipsis);
+    }
+}

@@ -1,31 +1,24 @@
-import { connect } from 'dva';
-import { useState, useEffect } from 'react';
-
+import { QuestionTile } from './components/QuestionTile'
 import styles from './index.less';
 
-export default function QuestionsList({ questions }) {
+export function QuestionsList({ questions }) {
   // region state 
   // endregion state
   // region effects
-  useEffect(() => {
-    dispatch({
-      type:'pollsModel/cacheQuestions'
-    })
-  }, [])
-  useEffect(() => {
-    console.log('questions are', pollsModel.questions);
-  }, [pollsModel.questions])
   // endregion effects
   // region template
-  
+  const $questions = questions.map(renderQuestion)
+
   return (
     <div className={styles.root}>
-      <main>
-        <article className={styles['questions-list']}>
-          <span className={styles['questions-header']}>Questions</span>
-        </article>
-      </main>
+      {$questions}
     </div>
   );
   // endregion template
+  // region methods 
+  function renderQuestion (question) {
+    const {url} = question;
+    return <QuestionTile key={url} questionObj={question} />;
+  }
+  // endregion methods
 }

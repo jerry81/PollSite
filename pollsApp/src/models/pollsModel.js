@@ -18,7 +18,11 @@ export default {
     *cacheQuestions() {
         try {
           const resp = yield arguments[1].call(pollsApi.getAllQuestions);
-          console.log('resp is ', resp);
+          yield arguments[1].put({
+            type: 'save',
+            key: 'questions',
+            data: resp
+          })
         } catch (e) {
             console.log('error while retreiving all questions ', JSON.stringify(e));
         }
