@@ -7,7 +7,7 @@ export function QuestionsList({ questions, onItemClick }) {
   // region effects
   // endregion effects
   // region template
-  const $questions = questions.map(renderQuestion)
+  const $questions = questions?.map(renderQuestion)
 
   return (
     <div className={styles.root}>

@@ -11,7 +11,7 @@ export function NewQuestionForm({ onSubmit }) {
   // region template
 
   return (
-    <div className={styles.root}>
+    <div id="create-panel" className={styles.root}>
       <article className={styles.heading}>New Question</article>
       <article className={styles.form}>
         <input placeholder="Your Question" value={question} onChange={(ev) => {setQuestion(ev.target.value)}}/>

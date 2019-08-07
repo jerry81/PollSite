@@ -26,8 +26,8 @@ function Polls({ pollsModel, dispatch }) {
   return (
     <div className={styles.root}>
       <main>
-        <button className={styles.create} onClick={toggleShowCreate}>Create a question</button>
-        <button className={styles.refresh} onClick={refreshList}>Refresh Questions</button>
+        <button id="create-poll" className={styles.create} onClick={toggleShowCreate}>Create a question</button>
+        <button id="refresh" className={styles.refresh} onClick={refreshList}>Refresh Questions</button>
         <article className={styles['questions-list']}>
           <span className={styles['questions-header']}>Questions</span>
           <QuestionsList questions={questions} onItemClick={onItemClick}/>
