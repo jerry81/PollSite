@@ -1,12 +1,35 @@
 .root {
     padding-top: 15px;
     padding-left: 15px;
-    
+    width:100%;
+
     .questions-list {
       
     }
     
     .questions-header {
       font-size:22px;
+    }
+
+    .hidden {
+        position:absolute;
+        top: 0;
+        left:0;
+      height:100%;
+      width:100%;
+      background:white;
+      transform: translateX(-100%);
+      transition: 1s;
+    }
+
+    .shown {
+        position:absolute;
+        top:0;
+        left:0;
+      height:100%;
+      width:100%;
+      background:white;
+      transform: translateX(0);
+      transition:1s;   
     }
 }

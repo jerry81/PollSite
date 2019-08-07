@@ -1,7 +1,7 @@
 import { QuestionTile } from './components/QuestionTile'
 import styles from './index.less';
 
-export function QuestionsList({ questions }) {
+export function QuestionsList({ questions, onItemClick }) {
   // region state 
   // endregion state
   // region effects
@@ -18,7 +18,7 @@ export function QuestionsList({ questions }) {
   // region methods 
   function renderQuestion (question) {
     const {url} = question;
-    return <QuestionTile key={url} questionObj={question} />;
+    return <QuestionTile key={url} questionObj={question} onClick={onItemClick}/>;
   }
   // endregion methods
 }
