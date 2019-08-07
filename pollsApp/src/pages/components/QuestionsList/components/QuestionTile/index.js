@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import styles from './index.less';
 
 export function QuestionTile({ questionObj, onClick }) {
-  console.log('question is ', questionObj);
   const { question, published_at, choices } = questionObj;
   // region state 
   // endregion state

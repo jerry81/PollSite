@@ -18,9 +18,6 @@ function Polls({ pollsModel, dispatch }) {
       type:'pollsModel/cacheQuestions'
     })
   }, [])
-  useEffect(() => {
-    console.log('questions are', questions);
-  }, [questions])
   // endregion effects
   // region template
   const questionDetailsPanelStyle = showDetails ? styles.shown : styles.hidden;
@@ -41,10 +38,17 @@ function Polls({ pollsModel, dispatch }) {
   // endregion template
   // region methods 
   function onItemClick(item) {
+    dispatch({
+      type:'pollsModel/cacheQuestions'
+    })
     setSelectedPoll(item);
     setShowDetails(true);
   }
-  function onSave() {
+  function onSave(url) {
+    dispatch({
+      type:'pollsModel/choose',
+      url
+    })
     setShowDetails(false);
   }
   // endregion methods

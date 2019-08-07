@@ -7,7 +7,8 @@ import pollsApi from '@/services/polls'
 export default {
   namespace: 'pollsModel',
   state: {
-    questions: []
+    questions: [],
+    needRefresh: false
   },
   reducers: {
     save(state, { key, data }) {
@@ -27,5 +28,13 @@ export default {
             console.log('error while retreiving all questions ', JSON.stringify(e));
         }
     },
+    *choose({url},{call}) {
+        try {
+          const resp = yield call(pollsApi.choose(url));
+          console.log('resp is ', resp);
+        } catch (e) {
+            console.log('error while choosing', JSON.stringify(e));
+        }
+    }
   }
 };

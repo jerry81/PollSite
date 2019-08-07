@@ -15,7 +15,7 @@ export default {
       }
       return umiRequest.post(`${BASE_URL}/questions`, { data: JSON.stringify(body) });
     },
-    choose: function ({question_id, choice_id}) {
-      return umiRequest.post(`${BASE_URL}/questions/${question_id}/choices/${choice_id}`)
+    choose: function (url) {
+      return umiRequest.post(`${BASE_URL}${url}`)
     }
 }
