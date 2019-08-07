@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import styles from './index.less';
 
-function Polls({ pollsModel, dispatch }) {
+export default function QuestionsList({ questions }) {
   // region state 
   // endregion state
   // region effects
@@ -29,7 +29,3 @@ function Polls({ pollsModel, dispatch }) {
   );
   // endregion template
 }
-
-export default connect(({ pollsModel }) => ({
-  pollsModel,
-}))(Polls);

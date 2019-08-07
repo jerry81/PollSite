@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import styles from './index.less';
 
-function Polls({ pollsModel, dispatch }) {
+function QuestionTile({ pollsModel, dispatch }) {
   // region state 
   // endregion state
   // region effects
