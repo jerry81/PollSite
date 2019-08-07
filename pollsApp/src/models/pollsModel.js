@@ -7,12 +7,20 @@ import pollsApi from '@/services/polls'
 export default {
   namespace: 'pollsModel',
   state: {
-    questions: [],
-    needRefresh: false
+    questions: []
   },
   reducers: {
     save(state, { key, data }) {
       _set(state, key, data);
+    },
+    updateVotes(state, { url, votes }) {
+      let updated = state.questions.find((item) => {
+          return url.includes(item.url)
+      })
+      let pollItem = updated.choices.find((item) => {
+          return item.url === url
+      })
+      pollItem.votes = votes;
     }
   },
   effects: {
@@ -28,19 +36,33 @@ export default {
             console.log('error while retreiving all questions ', JSON.stringify(e));
         }
     },
-    *choose({url},{call}) {
+    *choose({url},{call, put}) {
         try {
-          const resp = yield call(pollsApi.choose(url));
-          console.log('resp is ', resp);
+          const chooseResult = yield call(pollsApi.choose, url);
+          yield put({
+              type: 'updateVotes',
+              url: chooseResult.url,
+              votes: chooseResult.votes
+          })
+          const resp = yield call(pollsApi.getAllQuestions);
+          yield put({
+            type: 'save',
+            key: 'questions',
+            data: resp
+          })
         } catch (e) {
             console.log('error while choosing', JSON.stringify(e));
         }
     },
-    *createQuestion({question, choices}, {call}) {
+    *createQuestion({question, choices}, {call, put}) {
         try {
-            console.log('questions is ', question, choices);
-          const resp = yield call(pollsApi.createQuestion({question, choices}));
-          console.log('resp is ', resp);
+          yield call(pollsApi.createQuestion , {question, choices});
+          const resp = yield call(pollsApi.getAllQuestions);
+          yield put({
+            type: 'save',
+            key: 'questions',
+            data: resp
+          })
         } catch (e) {
             console.log('error while creating', JSON.stringify(e));
         }

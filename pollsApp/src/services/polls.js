@@ -17,5 +17,6 @@ export default {
     },
     choose: function (url) {
       return umiRequest.post(`${BASE_URL}${url}`)
+      
     }
 }
