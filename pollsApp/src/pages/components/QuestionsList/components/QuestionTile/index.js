@@ -1,5 +1,3 @@
-import { connect } from 'dva';
-import { useState, useEffect } from 'react';
 
 import styles from './index.less';
 

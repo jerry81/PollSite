@@ -35,6 +35,15 @@ export default {
         } catch (e) {
             console.log('error while choosing', JSON.stringify(e));
         }
+    },
+    *createQuestion({question, choices}, {call}) {
+        try {
+            console.log('questions is ', question, choices);
+          const resp = yield call(pollsApi.createQuestion({question, choices}));
+          console.log('resp is ', resp);
+        } catch (e) {
+            console.log('error while creating', JSON.stringify(e));
+        }
     }
   }
 };
